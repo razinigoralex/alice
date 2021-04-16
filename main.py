@@ -1,5 +1,6 @@
 from flask import Flask, request
 import logging
+import os
 
 
 class App:
@@ -88,4 +89,5 @@ if __name__ == "__main__":
                         format="%(asctime)s %(levelname)s %(name)s %(message)s")
 
     app = App(__name__).get_app()
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
